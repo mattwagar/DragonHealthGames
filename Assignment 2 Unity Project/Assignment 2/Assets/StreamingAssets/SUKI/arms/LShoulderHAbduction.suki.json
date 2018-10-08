@@ -1,0 +1,21 @@
+{
+    "_id": "5905235c04738f5c88da715",
+    "SchemaName": "joystick",
+    "SchemaResolution": "Range",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "SingleJointAngle",
+    "BodyAngles": [
+        "L_Shoulder_HorizontalAbduction"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": null,
+    "FloatBoundsInfo": {
+        "lowBounds": 0,
+        "highBounds": 130,
+        "reverse": false
+        "useExtents": true
+    },
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

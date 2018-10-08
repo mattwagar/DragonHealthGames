@@ -1,0 +1,22 @@
+{
+    "_id": "5905235c04738f5c88da7761",
+    "SchemaName": "moveRight",
+    "SchemaResolution": "Signal",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeVectorBetween",
+    "BodyNodes": [
+      "RightShoulder",
+      "RightHand"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": {
+        "reductionOperator": "YValue"
+    },
+    "ConditionInfo": {
+        "conditionOperator": "GreaterThan",
+        "extentPercentage": 0.1
+    },
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

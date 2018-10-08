@@ -1,0 +1,27 @@
+{
+    "_id": "5905235c04738f5c88daa442",
+    "SchemaName": "leftfoot",
+    "SchemaResolution": "Location2D",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "SingleNodePosition",
+    "BodyNodes": [
+        "LeftFoot"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": null,
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": {
+        "lowBounds": {
+            "x": 0,
+            "y": 0
+        },
+        "highBounds": {
+            "x": 0,
+            "y": 0
+        },
+        "useExtents": true,
+        "reverse": true
+    },
+    "Vector3BoundsInfo": null
+}

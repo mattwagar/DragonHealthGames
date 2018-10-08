@@ -1,0 +1,283 @@
+{
+    "name": "Warmup",
+    "categories": {
+        "Gameplay": [
+            {
+                "strings": [
+                    "Arms",
+                    "Balance and Reach",
+                    "Simple Balance"
+                ],
+                "value_": "Arms",
+                "name": "Suki type",
+                "alias": "Motion Tracking Category",
+                "description": "Category of motion tracking mode.",
+                "$type": "StringListParameter",
+                "$id": "3"
+            },
+            {
+                "strings": [
+                    "default.suki",
+                    "arms\\LElbowAngle.suki",
+                    "arms\\LHandHorizontal.suki",
+                    "arms\\LRArmRaise.suki",
+                    "arms\\LShoulderAbduction.suki",
+                    "arms\\RElbowAngle.suki",
+                    "arms\\RHandHorizontal.suki",
+                    "arms\\RShoulderAbduction.suki",
+                    "balance and reach\\LReachWave.suki",
+                    "balance and reach\\LRSideBending.suki",
+                    "balance and reach\\LRWeightShifting.suki",
+                    "balance and reach\\ReachAcross.suki",
+                    "balance and reach\\RReachWave.suki",
+                    "simple balance\\LRSideBending.suki",
+                    "simple balance\\LRWeightShifting.suki"
+                ],
+                "value_": "lelbowangle.suki",
+                "name": "Suki file",
+                "alias": "Motion Tracking Mode",
+                "description": "Which body motion to track to control the game.",
+                "$type": "StringListParameter",
+                "$id": "5"
+            },
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "Enable Suki Extents",
+                "alias": "Custom Range of Motion",
+                "description": "Use player's Range Of Motion instead of default for Body Tracking Mode.",
+                "$type": "BoolParameter",
+                "$id": "7"
+            },
+            {
+                "min_": 3.0,
+                "max_": 30.0,
+                "value_": 3.0,
+                "tick_": 0.5,
+                "name": "Player Starting Speed",
+                "alias": "Player Starting Speed",
+                "description": "Starting speed for the player",
+                "$type": "RangeParameter",
+                "$id": "8"
+            },
+            {
+                "min_": 1.0,
+                "max_": 15.0,
+                "value_": 4.0,
+                "tick_": 1.0,
+                "name": "Phase Length",
+                "alias": "Game Length (minutes)",
+                "description": "The length of the game in minutes",
+                "$type": "RangeParameter",
+                "$id": "9"
+            }
+        ],
+        "Audio": [
+            {
+                "min_": 0.0,
+                "max_": 1.0,
+                "value_": 1.0,
+                "tick_": 0.100000001490116,
+                "name": "Music Volume",
+                "alias": "Music Volume",
+                "description": "Volume level for background music",
+                "$type": "RangeParameter",
+                "$id": "11"
+            },
+            {
+                "min_": 0.0,
+                "max_": 1.0,
+                "value_": 1.0,
+                "tick_": 0.100000001490116,
+                "name": "FX Volume",
+                "alias": "FX Volume",
+                "description": "Volume level for sound effects",
+                "$type": "RangeParameter",
+                "$id": "12"
+            }
+        ],
+        "Block Spawning": [
+            {
+                "min_": 0.100000001490116,
+                "max_": 5.0,
+                "value_": 1.0,
+                "tick_": 0.100000001490116,
+                "name": "Spawning Rate (in seconds)",
+                "alias": "Spawning Rate (in seconds)",
+                "description": "The number of seconds between new blocks",
+                "$type": "RangeParameter",
+                "$id": "14"
+            },
+            {
+                "min_": 0.0,
+                "max_": 100.0,
+                "value_": 100.0,
+                "tick_": 1.0,
+                "name": "Block Spawn Chance",
+                "alias": "Block Spawn Chance",
+                "description": "Percent chance a block will spawn each second.",
+                "$type": "RangeParameter",
+                "$id": "15"
+            },
+            {
+                "min_": 0.0,
+                "max_": 100.0,
+                "value_": 50.0,
+                "tick_": 1.0,
+                "name": "Green Block Percent",
+                "alias": "Green Block Percent",
+                "description": "Percent chance a spawned block will be a green block.  Otherwise, it will be a red block.",
+                "$type": "RangeParameter",
+                "$id": "16"
+            },
+            {
+                "min_": 0.0,
+                "max_": 100.0,
+                "value_": 100.0,
+                "tick_": 1.0,
+                "name": "Left Lane Chance",
+                "alias": "Left Lane Chance",
+                "description": "Left Lane Chance",
+                "$type": "RangeParameter",
+                "$id": "17"
+            },
+            {
+                "min_": 0.0,
+                "max_": 100.0,
+                "value_": 100.0,
+                "tick_": 1.0,
+                "name": "Middle Lane Chance",
+                "alias": "Middle Lane Chance",
+                "description": "Middle Lane Chance",
+                "$type": "RangeParameter",
+                "$id": "18"
+            },
+            {
+                "min_": 0.0,
+                "max_": 100.0,
+                "value_": 100.0,
+                "tick_": 1.0,
+                "name": "Right Lane Chance",
+                "alias": "Right Lane Chance",
+                "description": "Right Lane Chance",
+                "$type": "RangeParameter",
+                "$id": "19"
+            },
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "Adaptative Game Difficulty",
+                "alias": "Adaptative Game Difficulty",
+                "description": null,
+                "$type": "BoolParameter",
+                "$id": "20"
+            }
+        ],
+        "Visual Effects": [
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "Glow",
+                "alias": "Glow",
+                "description": "Enable glow feature",
+                "$type": "BoolParameter",
+                "$id": "22"
+            },
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "Co-Pilot",
+                "alias": "Co-Pilot",
+                "description": "Enable co-pilot messages.",
+                "$type": "BoolParameter",
+                "$id": "23"
+            },
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "Score Notifications",
+                "alias": "Score Notifications",
+                "description": "Enable score notifications",
+                "$type": "BoolParameter",
+                "$id": "24"
+            },
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "HUD Color Changes",
+                "alias": "HUD Color Changes",
+                "description": "Enable HUD color changes",
+                "$type": "BoolParameter",
+                "$id": "25"
+            },
+            {
+                "value_": true,
+                "gameObjectsToActivateName": null,
+                "name": "Track Light Changes",
+                "alias": "Track Light Changes",
+                "description": "Track light changes",
+                "$type": "BoolParameter",
+                "$id": "26"
+            }
+        ]
+    },
+    "parameters": {
+        "Music Volume": {
+            "$ref": "11"
+        },
+        "FX Volume": {
+            "$ref": "12"
+        },
+        "Player Starting Speed": {
+            "$ref": "8"
+        },
+        "Phase Length": {
+            "$ref": "9"
+        },
+        "Spawning Frequency": {
+            "$ref": "14"
+        },
+        "Good Block Chance": {
+            "$ref": "16"
+        },
+        "Bad Block Chance": {
+            "$ref": "15"
+        },
+        "Left Lane Chance": {
+            "$ref": "17"
+        },
+        "Middle Lane Chance": {
+            "$ref": "18"
+        },
+        "Right Lane Chance": {
+            "$ref": "19"
+        },
+        "Glow": {
+            "$ref": "22"
+        },
+        "Co-Pilot": {
+            "$ref": "23"
+        },
+        "Score Notifications": {
+            "$ref": "24"
+        },
+        "HUD Color Changes": {
+            "$ref": "25"
+        },
+        "Track Light Changes": {
+            "$ref": "26"
+        },
+        "Suki type": {
+            "$ref": "3"
+        },
+        "Suki file": {
+            "$ref": "5"
+        },
+        "Adaptative Game Difficulty": {
+            "$ref": "20"
+        },
+        "Enable Suki Extents": {
+            "$ref": "7"
+        }
+    }
+}

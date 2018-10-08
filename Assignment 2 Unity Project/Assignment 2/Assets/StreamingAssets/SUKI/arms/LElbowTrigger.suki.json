@@ -1,0 +1,24 @@
+{
+    "_id": "5905235c04738f5c88da7748",
+
+    "SchemaName": "elbowtrigger",
+    "SchemaResolution": "Range",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeAngleBetween",
+    "BodyNodes": [
+        "LeftShoulder",
+        "LeftLowerArm",
+        "LeftHand"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": null,
+    "FloatBoundsInfo": {
+        "lowBounds": 30.0
+        "highBounds": 150.0,
+        "reverse":true
+        "useExtents": true
+    },
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

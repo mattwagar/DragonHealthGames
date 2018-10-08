@@ -1,0 +1,259 @@
+enAblegames Developer Libraries (EGDL)
+
+EGDL performs the following tasks 
+1) Handles user login (eag_Login scene)
+2) Manages getting parameter overrides from server, setting parameters and saving/loading parameter profiles (eag_MainMenu scene, DefaultParameters.json)
+In the eag_MoveCube scene:
+3) Binds game variables to parameters (VariableHandler class, and egFloat, egInt, etc.)
+4) Manages Avatar movement via network connection to enAblegames App (NetworkedSkeleton class)
+5) Translates body motions to inputs (SUKI classes and SUKI files in StreamingAssets)
+6) Calculates joint angle data (SkeletonData)
+7) Records game and body data to server (_Tracker object and Tracker scripts) 
+
+Adding EGDL (QuickStart Guide)
+The basic steps to add EGDL to your game are:
+1) Load your game project
+2) Import EGDL asset package (enablegames.unitypackage)
+3) Add logging in and setting parameters support: 
+3.1) Add eag/Demos/MoveCube/Scenes/eag_Login and eag_MainMenu scenes to your project build settings (these should be 0 and 1 levels)
+3.2) Set eag_Login._EnableAPI object's Game and Version parameters to your game's name and version number.
+3.3) Set eag_MainMenu.SceneManager object's GameSceneName to the name of your main game scene name (Play button loads it).  Default is "eag_MoveCubeGame".
+4) Load your main game scene. This will be scene 2 in the project build settings.  Drag the egObjects object (which contains NetworkManager, _Tracker, TrackingAvatar, and SukiSchemaList objects) from eag_MoveCubeGame scene to your main game scene.
+These are the objects you need for input and tracking.
+5) Add the EG code to handle body motion input, tracking, etc. and modify to move your game object instead of Cube.  Either add Game.cs or take code from it.
+5.1) Add code labeled starting with /// BEGIN ENABLEGAMES REQUIRED CODE from eag/Demos/MoveCube/Scripts/Game.cs script to your main game script which handles input.
+5.2) Call egAwake() and egStart() from your main game script's Awake and Start functions.
+5.2) Replace PlayerObject in egGetSukiInput() with whatever object or vector you want to be controlled by body input. 
+5.3) Edit the footer data that will be written at end of a session (i.e. score, achievments) by changing the code in Footer.cs
+5.4) When level begins, call egBeginSession() to start recording the body motion data and game data to the server.  
+5.5) When level ends, call egEndSession() to disconnect network client at end of level and write the footer data to the server.  
+5.6) Add any parameters and variables you want to set in the parameter settings as described in the section below.
+6) It is recommended that you set your game for the "Good" quality level in Edit->Project Settings->Quality so CPU usage will be balanced between your game and the launcher.
+7) Edit the Build Settings->Player Settings to set your Company Name, and Product Name, Icon, and Splash Image Logo. (see examples in EGDL demo project). 
+8) To have the game parameters accessible via the portal, you will need to have your game and its DefaultParameters.json file added to the server and server code. This is done by sending it to the enAbleGames development team.
+8.1) The DefaultParameters.json file will be renamed your_game_name.json and be put at enableweb/server/games
+8.2) A 700x400 game image your_game_name.jpg will be put in enableweb/public/img/games
+8.3) Your game name added to enableweb/public/js/routes.js (and enableweb/server/test/api.settings.game.js for api testing)
+
+
+Using Parameters
+Parameters are values that can be changed by the player or remotely via the portal.  These get bound to variables in the game to control difficulty, type of motion-input mapping, or even volume.
+The EGDL stores all parameters in JSON files.  The default file is called DefaultParameters.json and it is located in the StreamingAssets folder.  This file is used to automatically generate the UI elements for each parameter in the MainMenu scene when the Settings button is pressed, including Sliders, Buttons, and Toggles. Parameters are also able to be overrided by a Clinic user via the enAblegames portal.  These overrides are automatically handled by the EGDL.
+ All parameters can be Saved and Loaded to individually-named files for setting up a game for a particular user or type of therapy. This is also automatically handled in the MainMenu scene.
+To modify a parameter's default value, simply edit the DefaltParameters.json file.
+Adding a new parameter: 
+To add a new parameter and bind it to a variable:
+1) Copy an old one and change the name and give it a new unused $id for the parameter,
+            {
+                "min_": 1.0,
+                "max_": 10.0,
+                "value_": 1.0,
+                "tick_": 0.5,
+                "name": "Player Starting Speed",
+                "alias": "Player Starting Speed",
+                "description": "Starting speed for the player",
+                "$type": "RangeParameter",
+                "$id": "7"
+            }
+
+2) Also add it to the bottom of the DefaultParameters.json file under the "parameters" entry, with the "$ref" the same as the $id number above
+        "Player Starting Speed": {
+            "$ref": "7"
+        },
+
+3) In order to keep track of all the parameter names in one place and make sure they match in code and with the name in the DefaultParameter.json file, there are two classes to hold the names.  The class ParameterStrings holds user-defined parameter names, and the egParameterStrings classs holds EGDL-required parameter names.  Add your new parameter to the ParameterStrings.cs file:
+	public class ParameterStrings
+	{
+    		public static string STARTING_SPEED = "Player Starting Speed";
+		public static string GRAVITY = "Gravity";
+	}
+
+4) Once a new parameter has been added, you can access its value by binding it to a variable via the VariableHandler class.  The EGDL supports egVar variations of several native types, including egFloat, egInt, egBool, and egString.  These can be used in place of their native types:
+	egFloat speed = 1.0f;
+	VariableHandler.Instance.Register(ParameterStrings.STARTING_SPEED, Speed);
+	pos.x = pos.x + mov.x * Speed;
+
+The VariableHandler's Register function is passed the name of the parameter to bind to, and the egVar variable which is getting bound.  If the variable is changed by the game, the parameter will be automatically updated, and if the parameter is changed, the variable will be updated. 
+
+ADDING BODY INPUT (SUKI)
+enAblegames translation of body inputs into game inputs is called SUKI (System for Unified Kinematic Input).  SUKI loads external files which hold definitions on which body part to monitor and how to translate the body data to game input.  These external SUKI profiles are stored as JSON files called Schemas, and are located in the SteamingAssets/SUKI directory.  Actually, SUKI is given the name of a file with a .suki extension which holds the name of one or more JSON schema files.  An example is LRSideBending.suki which contains the names of two schema files.
+	constraint.straightback.suki.json	
+	torsosideleaning.suki.json
+
+The first file is a SUKI constraint to monitor the spine and make sure the player does not lean too forward (slouch).  The second file translates torso side-to-side bending into the game input. The JSON file defines the type of game input the body motion will translate into, such as a range between 0.0-1.0, and also the name of the input that the game will use to get the value, such as "joystick".
+Typically, a user loads one of several SUKI files via the MainMenu parameters.  The list of available SUKI profiles is in the parameters "Suki_type" which contains the category of the file (subdirectory where it is located), and "Suki_file" which contains the path and name of the file
+
+            {
+                "strings": [
+                    "Arms",
+                    "Balance and Reach"
+                ],
+                "value_": "Arms",
+                "name": "Suki type",
+                "alias": "Motion Tracking Category",
+                "description": "Category of motion tracking mode.",
+                "$type": "StringListParameter",
+                "$id": "3"
+            },
+            {
+                "strings": [
+                    "default.suki",
+                    "arms\\LElbowAngle.suki",
+                    "arms\\LHandHorizontal.suki",
+                    "balance and reach\\LReachWave.suki",
+                    "balance and reach\\LRSideBending.suki",
+                ],
+                "value_": "default.suki",
+                "name": "Suki file",
+                "alias": "Motion Tracking Mode",
+                "description": "Which body motion to track to control the game.",
+                "$type": "StringListParameter",
+                "$id": "5"
+            },
+                    
+Using SUKI in your game
+If you want to use existing SUKI files, there are several steps:
+1) Add SukiSchemaList object (empty object with SukiSchemaList.cs script) to handle SUKI schemas
+2) Use MainMenu Settings menu to load a SUKI file, or explicitly load one in code by calling SukiSchemaList.AddFile(string filename);
+3) Add a TrackingAvatar to your scene at the origin.  This is a Unity standard humanoid avatar which is the body that receives the body data from the enAblegames App.  It must be at the origin so the correct position data is recorded to the server.  If you need an avatar in a different location, you will create a second avatar that is ghosted to the tracking avatar. The TrackingAvatar has the following components:
+Animator
+Network Skeleton
+Network Identity
+Skeleton Data
+TrackAvatar (see Recording Game Session below)
+If you don't need to see the avatar in the game, we recommend disabling (unchecking) the SkinnedMeshRenderer component.
+4) Add NetworkManager prefab to scene to connect to enAblegames App.
+Adding a new SUKI file
+Sometimes the existing SUKI files are not sufficient for your game,and you need to create some new ones.  If you create/add a new SUKI file, there are several steps:
+1) Add new .suki file (and any new .suki.json schema files) to the appropriate SUKI sub-directory
+2) Edit the DefaultParameters.json file and add the new .suki name and path.
+3) Add an associated animated GIF and PNG to StreamingAssets/suki_icons directory motion for the MainMenu Settings' UI.  
+If you want a new stick-figure image and animation showing the body motion, use the program "Stykz" (stykz.net) to modify an existing one from the "SUKI icons" directory.  ezgif.com can then be used to optimize the animated GIF size.
+
+SUKI Names
+
+Joint Names: used in "SchemaMetric": "SingleJointAngle" (1 joint)
+
+
+
+
+namespace Suki
+{
+
+    internal enum InputResolution
+    {
+        Trigger,
+        Signal,
+        Range,
+        Location2D,
+        Location3D
+    }
+
+    internal enum NodeMetric
+    {
+        SingleNodePosition,
+        SingleJointAngle,
+        MultiNodeVectorBetween,
+        MultiNodeAngleBetween,
+    }
+
+    internal enum Device
+    {
+        Kinect
+    }
+
+//Bone Names (position point):  used in "SchemaMetric": "MultiNodeVectorBetween" (2 points) or 
+//    "SchemaMetric": "MultiNodeAngleBetween" (3 points)
+    public enum BodyNode
+    {
+        Hips,
+        Spine,
+        Chest,
+        Neck,
+        Head,
+        LeftUpperArm,
+        LeftLowerArm,
+        LeftHand,
+        LeftIndexProximal,
+        LeftIndexIntermediate,
+        LeftThumbProximal,
+        RightUpperArm,
+        RightLowerArm,
+        RightHand,
+        RightIndexProximal,
+        RightIndexIntermediate,
+        RightThumbProximal,
+        LeftUpperLeg,
+        LeftLowerLeg,
+        LeftFoot,
+        LeftToes,
+        RightUpperLeg,
+        RightLowerLeg,
+        RightFoot,
+        RightToes,
+        LeftShoulder,
+        RightShoulder
+    }
+
+//Joint Names: used in "SchemaMetric": "SingleJointAngle" (1 joint)
+    public enum BodyAngle
+    {
+        Neck_Flexion,
+        Neck_LateralFlexion,
+        L_Shoulder_Flexion,
+        L_Shoulder_Abduction,
+        L_Shoulder_HorizontalAbduction,
+        L_Elbow_Flexion,
+        R_Shoulder_Flexion,
+        R_Shoulder_Abduction,
+        R_Shoulder_HorizontalAbduction,
+        R_Elbow_Flexion,
+        L_Hip_Flexion,
+        L_Hip_Abduction,
+        L_Hip_Rotation,
+        R_Hip_Flexion,
+        R_Hip_Abduction,
+        R_Hip_Rotation,
+        R_Knee_Flexion,
+        L_Knee_Flexion,
+        Spine_Flexion,
+        Spine_LateralFlexion,
+        Spine_Rotation
+    }
+
+    internal enum Calculation
+    {
+        CrossProduct,
+        VectorAdd,
+        VectorMultiply
+    }
+
+    internal enum Reduction
+    {
+        Magnitude,
+        DotProduct,
+        XValue,
+        YValue,
+        ZValue,
+    }
+
+    internal enum Condition
+    {
+        GreaterThan,
+        GreatherThanEqual,
+        Equal,
+        LessThanEqual,
+        LessThan
+    }
+
+}
+
+
+RECORDING GAME SESSION TO PORTAL
+The enAblegames' portal records all game session data.  This includes the parameter settings for a game, all player motion data, any in-game data the game wants to specifically record, and a summary "footer" containing the game's score, duration, performance info, and even a player message.  The EGDL Tracker classes handle recording of all data to the portal's server.  In order to record information for your game, follow the following steps. 
+1) Add Tracker prefab which records game and body data to server (_Tracker object and Tracker scripts) 
+2) Make sure the TrackAvatar component is on your TrackingAvatar.
+3) Edit TrackerFooter.cs to grab and serialize any game data you want to show up on the portal under the game session info.  FooterMessage fills in the values of all the serialed fields (variables preceeded with the [fsProperty] directive, e.g.:
+	[fsProperty]
+	public string playerNotes;
+
