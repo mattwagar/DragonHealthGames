@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/eag/Demos/MoveCube/Scenes/eag_MoveCubeGame.unity
+    guid: afff33e3664f7104cbb3f7b1e693fc01
+  - enabled: 1
+    path: Assets/eag/Demos/MoveCube/Scenes/eag_MainMenu.unity
+    guid: fbf6f51bf8de2b3459bde54e78e01866
+  - enabled: 1
+    path: Assets/eag/Demos/MoveCube/Scenes/eag_Login.unity
+    guid: 5c2c5a38237e05a4695a595f659d85e9
