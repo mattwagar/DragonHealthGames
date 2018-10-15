@@ -25,7 +25,7 @@ public class TrackEditor : Editor {
 			EditorGUI.LabelField (rect, "Beats", EditorStyles.boldLabel);
 		};
 
-		_myList.elementHeight = (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) *5;
+		_myList.elementHeight = (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) *4;
  
 		_myList.drawElementCallback = 
 			(Rect rect, int index, bool isActive, bool isFocused) => {
@@ -43,10 +43,13 @@ public class TrackEditor : Editor {
         EditorGUILayout.PropertyField(_BPM);
         EditorGUILayout.PropertyField(_TrackSpeed);
         EditorGUILayout.PropertyField(_clip);
+
+		Track track = (Track) target;
+			EditorGUILayout.LabelField ("(Beats are "+ (1 / (60f / track.BPM * (float)track.TrackSpeed)) +" seconds or "+((1 / (60f / track.BPM * (float)track.TrackSpeed)) / 0.0416666666666667f)+" frames)", EditorStyles.boldLabel);
+
 		_myList.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
 
-		Track track = (Track) target;
 		for(int i = 0; i < track.Beats.Count; i ++)
 		{
 			track.Beats[i].AudioLength = (int)((float)track.BPM * track.Clip.length / 60f);
@@ -64,7 +67,6 @@ public class TrackEditor : Editor {
 				case TrackSpeed.Sixteenth:
 				track.Beats[i].AudioLength *= 4;
 				break;
-				
 			}
 		}
 		

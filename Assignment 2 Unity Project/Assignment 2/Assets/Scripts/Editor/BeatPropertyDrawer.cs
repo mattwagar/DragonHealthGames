@@ -10,8 +10,7 @@ public class BeatPropertyDrawer : PropertyDrawer
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
 		float height = 0;
-		SerializedProperty StartPositionX = property.FindPropertyRelative("StartPositionX");
-		SerializedProperty StartPositionZ = property.FindPropertyRelative("StartPositionZ");
+		SerializedProperty BeatLocation = property.FindPropertyRelative("BeatLocation");
 		// SerializedProperty Curve = property.FindPropertyRelative("Curve");
 		SerializedProperty BeatStart = property.FindPropertyRelative("BeatStart");
 		SerializedProperty BeatEnd = property.FindPropertyRelative("BeatEnd");
@@ -19,9 +18,7 @@ public class BeatPropertyDrawer : PropertyDrawer
 
 
 		height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-		EditorGUI.PropertyField(new Rect(position.x, position.y+height, position.width, EditorGUIUtility.singleLineHeight), StartPositionX, new GUIContent("Start Position X(%)"));
-		height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-        EditorGUI.PropertyField(new Rect(position.x, position.y+height, position.width, EditorGUIUtility.singleLineHeight), StartPositionZ, new GUIContent("Start Position Z(%)"));
+		EditorGUI.PropertyField(new Rect(position.x, position.y+height, position.width, EditorGUIUtility.singleLineHeight), BeatLocation);
 		height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 		// EditorGUI.PropertyField(new Rect(position.x, position.y+height, position.width, EditorGUIUtility.singleLineHeight), Curve);
 		// height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;

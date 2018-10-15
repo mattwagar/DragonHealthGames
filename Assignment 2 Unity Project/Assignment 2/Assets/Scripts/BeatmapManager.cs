@@ -10,6 +10,11 @@ public class BeatmapManager : MonoBehaviour {
 	public TimelineAsset TimelineAsset;
 	public PlayableDirector PlayableDirector;
 	public GameObject CollectiblePrefab;
+	public GameObject CenterZone;
+	public GameObject NorthZone;
+	public GameObject SouthZone;
+	public GameObject EastZone;
+	public GameObject WestZone;
 	
 	public Track Track;
 	
@@ -17,48 +22,67 @@ public class BeatmapManager : MonoBehaviour {
 	{
 		get{return Track.Beats;}
 	} 
-
-	public float MinPositionX;
-	public float MaxPositionX;
-
-	public float MinPositionZ;
-	public float MaxPositionZ;
-
 	void Start()
 	{
-		initializeBeats();
+		InitializeBeats();
 	}
 
-	void initializeBeats(){
-		float distanceX = Mathf.Abs(MinPositionX) + Mathf.Abs(MaxPositionX);
-		float distanceZ = Mathf.Abs(MinPositionZ) + Mathf.Abs(MaxPositionZ);
+	void InitializeBeats(){
 		 
 		for(int i = 0; i < beats.Count; i++)
 		{
-			float StartPositionX = (beats[i].StartPositionX * 0.01f * distanceX) - (distanceX * 0.5f);
-			float StartPositionZ = (beats[i].StartPositionZ * 0.01f * distanceZ) - (distanceZ * 0.5f);
-			GameObject Collectible = Instantiate(CollectiblePrefab.gameObject, new Vector3(StartPositionX,10,StartPositionZ), Quaternion.identity);
-			Collectible.transform.parent = transform;
-			setTimeline(Collectible, i);
+			ConvertBeatToControlTrack(beats[i], i);
 		} 
 	}
 
-	void setTimeline(GameObject Collectible, int index){
-		AnimationTrack track = TimelineAsset.CreateTrack<AnimationTrack>(null, "Collectible_"+index);
+	void ConvertBeatToControlTrack(Beat beat, int index){
+		ControlTrack track = TimelineAsset.CreateTrack<ControlTrack>(null, "Collectible_"+index);
 
-		TimelineAsset collectibleTimelineAsset = Collectible.GetComponent<PlayableDirector>().playableAsset as TimelineAsset;
-		List<TrackAsset> trackAssets = collectibleTimelineAsset.GetOutputTracks().ToList();
+		TimelineAsset timelineAsset = CollectiblePrefab.GetComponent<PlayableDirector>().playableAsset as TimelineAsset;
 
-		for(int i = 0; i < trackAssets.Count; i++)
+		TimelineClip clip = track.CreateDefaultClip();
+		clip.start = beat.BeatStart * (1 / (60f / Track.BPM * (float)Track.TrackSpeed));
+		
+		float beatDuration  = ((beat.BeatEnd - beat.BeatStart) * (1 / (60f / Track.BPM * (float)Track.TrackSpeed)));
+		float collectibleDuration = (float)timelineAsset.duration;
+		
+		clip.timeScale = timelineAsset.duration / beatDuration;
+
+		clip.duration = beatDuration;
+
+		ControlPlayableAsset controlPlayableAsset = clip.asset as ControlPlayableAsset;
+
+		controlPlayableAsset.sourceGameObject.exposedName = UnityEditor.GUID.Generate ().ToString ();
+		switch(beat.BeatLocation)
 		{
-			List<TimelineClip> clips = trackAssets[i].GetClips().ToList();
-			for(int j = 0; j < clips.Count;  j++)
-			{
-				TimelineClip clip = track.CreateDefaultClip();
-				AnimationPlayableAsset animationPlayableAsset = clip.asset as AnimationPlayableAsset;
-				
-				animationPlayableAsset.clip = clips[j].animationClip;
-			}
+			case BeatLocation.Center:
+			PlayableDirector.SetReferenceValue(controlPlayableAsset.sourceGameObject.exposedName, CenterZone);
+			break;
+			case BeatLocation.North:
+			PlayableDirector.SetReferenceValue(controlPlayableAsset.sourceGameObject.exposedName, NorthZone);
+			break;
+			case BeatLocation.South:
+			PlayableDirector.SetReferenceValue(controlPlayableAsset.sourceGameObject.exposedName, SouthZone);
+			break;
+			case BeatLocation.East:
+			PlayableDirector.SetReferenceValue(controlPlayableAsset.sourceGameObject.exposedName, EastZone);
+			break;
+			case BeatLocation.West:
+			PlayableDirector.SetReferenceValue(controlPlayableAsset.sourceGameObject.exposedName, WestZone);
+			break;
+		}
+
+		controlPlayableAsset.prefabGameObject = CollectiblePrefab;
+		controlPlayableAsset.updateParticle = false;
+		controlPlayableAsset.updateITimeControl = false;
+		controlPlayableAsset.updateDirector = true;
+	}
+
+	void OnApplicationQuit(){
+		List<TrackAsset> tracks = TimelineAsset.GetOutputTracks().ToList();
+		for(int i = tracks.Count-1; i >= 0; i--)
+		{
+			TimelineAsset.DeleteTrack(tracks[i]);
 		}
 	}
 
