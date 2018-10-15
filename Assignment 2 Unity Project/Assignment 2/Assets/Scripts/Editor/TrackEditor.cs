@@ -45,24 +45,7 @@ public class TrackEditor : Editor {
         EditorGUILayout.PropertyField(_clip);
 
 		Track track = (Track) target;
-		switch(track.TrackSpeed){
-			case TrackSpeed.Whole:
-			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM * 4) +" seconds or "+((60f / track.BPM * 4) * 100)+" frames)", EditorStyles.boldLabel);
-			break;
-			case TrackSpeed.Half:
-			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM * 2) +" seconds or "+((60f / track.BPM * 2) * 100)+" frames)", EditorStyles.boldLabel);
-			break;
-			case TrackSpeed.Quarter:
-			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM ) +" seconds or "+((60f / track.BPM) * 100)+" frames)", EditorStyles.boldLabel);
-			break;
-			case TrackSpeed.Eighth:
-			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM / 2) +" seconds or "+((60f / track.BPM / 2) * 100)+" frames)", EditorStyles.boldLabel);
-			break;
-			case TrackSpeed.Sixteenth:
-			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM / 4) +" seconds or "+((60f / track.BPM / 4) * 100)+" frames)", EditorStyles.boldLabel);
-			break;
-			
-		}
+			EditorGUILayout.LabelField ("(Beats are "+ (1 / (60f / track.BPM * (float)track.TrackSpeed)) +" seconds or "+((1 / (60f / track.BPM * (float)track.TrackSpeed)) / 0.0416666666666667f)+" frames)", EditorStyles.boldLabel);
 
 		_myList.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
@@ -84,7 +67,6 @@ public class TrackEditor : Editor {
 				case TrackSpeed.Sixteenth:
 				track.Beats[i].AudioLength *= 4;
 				break;
-				
 			}
 		}
 		

@@ -24,24 +24,31 @@ public class BeatmapManager : MonoBehaviour {
 	} 
 	void Start()
 	{
-		initializeBeats();
+		InitializeBeats();
 	}
 
-	void initializeBeats(){
+	void InitializeBeats(){
 		 
 		for(int i = 0; i < beats.Count; i++)
 		{
-			setTimeline(beats[i], i);
+			ConvertBeatToControlTrack(beats[i], i);
 		} 
 	}
 
-	void setTimeline(Beat beat, int index){
+	void ConvertBeatToControlTrack(Beat beat, int index){
 		ControlTrack track = TimelineAsset.CreateTrack<ControlTrack>(null, "Collectible_"+index);
 
-		PlayableDirector collectiblePlayableDirector = CollectiblePrefab.GetComponent<PlayableDirector>();
+		TimelineAsset timelineAsset = CollectiblePrefab.GetComponent<PlayableDirector>().playableAsset as TimelineAsset;
 
 		TimelineClip clip = track.CreateDefaultClip();
-		clip.duration = collectiblePlayableDirector.duration;
+		clip.start = beat.BeatStart * (1 / (60f / Track.BPM * (float)Track.TrackSpeed));
+		
+		float beatDuration  = ((beat.BeatEnd - beat.BeatStart) * (1 / (60f / Track.BPM * (float)Track.TrackSpeed)));
+		float collectibleDuration = (float)timelineAsset.duration;
+		
+		clip.timeScale = timelineAsset.duration / beatDuration;
+
+		clip.duration = beatDuration;
 
 		ControlPlayableAsset controlPlayableAsset = clip.asset as ControlPlayableAsset;
 
@@ -62,7 +69,6 @@ public class BeatmapManager : MonoBehaviour {
 			break;
 			case BeatLocation.West:
 			PlayableDirector.SetReferenceValue(controlPlayableAsset.sourceGameObject.exposedName, WestZone);
-			// ControlPlayableAsset
 			break;
 		}
 
