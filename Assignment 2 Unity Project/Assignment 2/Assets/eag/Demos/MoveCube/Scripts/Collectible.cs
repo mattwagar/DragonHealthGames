@@ -37,8 +37,16 @@ public class Collectible : MonoBehaviour {
 		Debug.Log ("Collectible hit!");
 		game.score+=10;
 		this.gameObject.GetComponent<AudioSource> ().Play ();
+
+        UpdatePlayerScore();
+
 		CreateCollectible();
 		Destroy(gameObject);
 
+    }
+
+    void UpdatePlayerScore()
+    {
+        GameObject.Find("GameLogic").GetComponent<ScoreSystem>().UpdateScore(2);
     }
 }
