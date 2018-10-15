@@ -28,8 +28,6 @@ public class BeatmapManager : MonoBehaviour {
 	}
 
 	void initializeBeats(){
-		float distanceX = Mathf.Abs(MinPositionX) + Mathf.Abs(MaxPositionX);
-		float distanceZ = Mathf.Abs(MinPositionZ) + Mathf.Abs(MaxPositionZ);
 		 
 		for(int i = 0; i < beats.Count; i++)
 		{
@@ -40,9 +38,7 @@ public class BeatmapManager : MonoBehaviour {
 	void setTimeline(Beat beat, int index){
 		ControlTrack track = TimelineAsset.CreateTrack<ControlTrack>(null, "Collectible_"+index);
 
-		// TimelineAsset collectibleTimelineAsset = CollectiblePrefab.GetComponent<PlayableDirector>().playableAsset as TimelineAsset;
 		PlayableDirector collectiblePlayableDirector = CollectiblePrefab.GetComponent<PlayableDirector>();
-		// List<TrackAsset> trackAssets = collectibleTimelineAsset.GetOutputTracks().ToList();
 
 		TimelineClip clip = track.CreateDefaultClip();
 		clip.duration = collectiblePlayableDirector.duration;
@@ -74,30 +70,14 @@ public class BeatmapManager : MonoBehaviour {
 		controlPlayableAsset.updateParticle = false;
 		controlPlayableAsset.updateITimeControl = false;
 		controlPlayableAsset.updateDirector = true;
+	}
 
-		
-
-
-		// controlPlayableAsset.CreatePlayable<PrefabControlPlayable>();
-		
-		// for(int i = 0; i < trackAssets.Count; i++)
-		// {
-		// 		TimelineClip clip = track.CreateDefaultClip();
-		// 		ControlPlayableAsset controlPlayableAsset = clip.asset as ControlPlayableAsset;
-
-		// 		controlPlayableAsset.prefabGameObject
-
-
-
-			// List<TimelineClip> clips = trackAssets[i].GetClips().ToList();
-			// for(int j = 0; j < clips.Count;  j++)
-			// {
-			// 	TimelineClip clip = track.CreateDefaultClip();
-			// 	AnimationPlayableAsset animationPlayableAsset = clip.asset as AnimationPlayableAsset;
-				
-			// 	animationPlayableAsset.clip = clips[j].animationClip;
-			// }
-		// }
+	void OnApplicationQuit(){
+		List<TrackAsset> tracks = TimelineAsset.GetOutputTracks().ToList();
+		for(int i = tracks.Count-1; i >= 0; i--)
+		{
+			TimelineAsset.DeleteTrack(tracks[i]);
+		}
 	}
 
 }

@@ -43,10 +43,30 @@ public class TrackEditor : Editor {
         EditorGUILayout.PropertyField(_BPM);
         EditorGUILayout.PropertyField(_TrackSpeed);
         EditorGUILayout.PropertyField(_clip);
+
+		Track track = (Track) target;
+		switch(track.TrackSpeed){
+			case TrackSpeed.Whole:
+			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM * 4) +" seconds or "+((60f / track.BPM * 4) * 100)+" frames)", EditorStyles.boldLabel);
+			break;
+			case TrackSpeed.Half:
+			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM * 2) +" seconds or "+((60f / track.BPM * 2) * 100)+" frames)", EditorStyles.boldLabel);
+			break;
+			case TrackSpeed.Quarter:
+			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM ) +" seconds or "+((60f / track.BPM) * 100)+" frames)", EditorStyles.boldLabel);
+			break;
+			case TrackSpeed.Eighth:
+			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM / 2) +" seconds or "+((60f / track.BPM / 2) * 100)+" frames)", EditorStyles.boldLabel);
+			break;
+			case TrackSpeed.Sixteenth:
+			EditorGUILayout.LabelField ("(Beats are "+ (60f / track.BPM / 4) +" seconds or "+((60f / track.BPM / 4) * 100)+" frames)", EditorStyles.boldLabel);
+			break;
+			
+		}
+
 		_myList.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
 
-		Track track = (Track) target;
 		for(int i = 0; i < track.Beats.Count; i ++)
 		{
 			track.Beats[i].AudioLength = (int)((float)track.BPM * track.Clip.length / 60f);
