@@ -11,19 +11,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08102fc5f9081844ba57da13a4f23759, type: 3}
   m_Name: TestTrack
   m_EditorClassIdentifier: 
-  BPM: 120
-  TrackSpeed: 2
+  BPM: 150
+  TrackSpeed: 4
   Clip: {fileID: 8300000, guid: 11d68bbe6dd04f944b10e16b025ca85d, type: 3}
   Beats:
   - BeatLocation: 0
     BeatStart: 0
     BeatEnd: 1
-    AudioLength: 120
+    AudioLength: 150
+  - BeatLocation: 3
+    BeatStart: 1
+    BeatEnd: 2
+    AudioLength: 150
+  - BeatLocation: 4
+    BeatStart: 2
+    BeatEnd: 4
+    AudioLength: 150
   - BeatLocation: 2
     BeatStart: 2
-    BeatEnd: 3
-    AudioLength: 120
-  - BeatLocation: 3
-    BeatStart: 2
-    BeatEnd: 3
-    AudioLength: 120
+    BeatEnd: 5
+    AudioLength: 150

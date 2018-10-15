@@ -14,7 +14,7 @@ MonoBehaviour:
   m_NextId: 0
   m_Tracks:
   - {fileID: 114538929504620826}
-  m_FixedDuration: 0
+  m_FixedDuration: 0.041666666666666664
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 0
