@@ -25,7 +25,7 @@ public class TrackEditor : Editor {
 			EditorGUI.LabelField (rect, "Beats", EditorStyles.boldLabel);
 		};
 
-		_myList.elementHeight = (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) *5;
+		_myList.elementHeight = (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) *4;
  
 		_myList.drawElementCallback = 
 			(Rect rect, int index, bool isActive, bool isFocused) => {

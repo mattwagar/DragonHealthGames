@@ -15,18 +15,15 @@ MonoBehaviour:
   TrackSpeed: 2
   Clip: {fileID: 8300000, guid: 11d68bbe6dd04f944b10e16b025ca85d, type: 3}
   Beats:
-  - StartPositionX: 0
-    StartPositionZ: 0
+  - BeatLocation: 0
     BeatStart: 0
     BeatEnd: 1
     AudioLength: 120
-  - StartPositionX: 0
-    StartPositionZ: 0
+  - BeatLocation: 2
     BeatStart: 2
     BeatEnd: 3
     AudioLength: 120
-  - StartPositionX: 0
-    StartPositionZ: 0
+  - BeatLocation: 3
     BeatStart: 2
     BeatEnd: 3
     AudioLength: 120
