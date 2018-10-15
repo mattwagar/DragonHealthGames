@@ -1,0 +1,118 @@
+{
+    "name": "Default Parameters",
+    "categories": {
+        "Gameplay": [
+            {
+                "strings": [
+                    "Arms",
+                    "Legs",
+                    "Head",
+                    "Balance and Reach",
+                    "Simple Balance"
+                ],
+                "value_": "Arms",
+                "name": "Suki type",
+                "alias": "Motion Tracking Category",
+                "description": "Category of motion tracking mode.",
+                "$type": "StringListParameter",
+                "$id": "3"
+            },
+            {
+                "strings": [
+                    "default.suki",
+                    "Arms\\L_ElbowAngle.suki",
+                    "Arms\\L_HandHorizontal.suki",
+                    "Arms\\L_ShoulderAbduction.suki",
+                    "Arms\\L_Hand.suki",
+                    "Arms\\LR_ArmRaise.suki",
+                    "Arms\\R_ElbowAngle.suki",
+                    "Arms\\R_HandHorizontal.suki",
+                    "Arms\\R_ShoulderAbduction.suki",
+                    "Arms\\R_Hand.suki",
+                    "Legs\\L_Foot.suki",
+                    "Legs\\R_Foot.suki",
+                    "Legs\\L_KneeKick.suki",
+                    "Legs\\R_KneeKick.suki",
+                    "Head\\HeadTilt.suki",
+                    "Balance and Reach\\L_ReachWave.suki",
+                    "Balance and Reach\\LR_SideBending.suki",
+                    "Balance and Reach\\LR_WeightShifting.suki",
+                    "Balance and Reach\\ReachAcross.suki",
+                    "Balance and Reach\\R_ReachWave.suki",
+                    "Simple Balance\\LR_SideBending.suki",
+                    "Simple Balance\\LR_WeightShifting.suki"
+                ],
+                "value_": "default.suki",
+                "name": "Suki file",
+                "alias": "Motion Tracking Mode",
+                "description": "Which body motion to track to control the game.",
+                "$type": "StringListParameter",
+                "$id": "5"
+            },
+            {
+                "value_": true,
+                "gameObjectsToactivateName": null,
+                "name": "Enable Suki Extents",
+                "alias": "Custom Range of Motion",
+                "description": "Use player's Range Of Motion instead of default for Body Tracking Mode.",
+                "$type": "BoolParameter",
+                "$id": "9"
+            },
+            {
+                "min_": 1.0,
+                "max_": 300.0,
+                "value_": 125.0,
+                "tick_": 1.0,
+                "name": "Game Length",
+                "alias": "Game Length",
+                "description": "The number of seconds to play in a game session",
+                "$type": "RangeParameter",
+                "$id": "6"
+            },
+
+            {
+                "min_": 1.0,
+                "max_": 10.0,
+                "value_": 1.0,
+                "tick_": 0.5,
+                "name": "Player Starting Speed",
+                "alias": "Player Starting Speed",
+                "description": "Starting speed for the player",
+                "$type": "RangeParameter",
+                "$id": "7"
+            }
+            {
+                "min_": -10.0,
+                "max_": -0.1,
+                "value_": -0.3,
+                "tick_": 0.1,
+                "name": "Gravity",
+                "alias": "Gravity",
+                "description": "Falling speed",
+                "$type": "RangeParameter",
+                "$id": "8"
+            }
+
+        ]
+    },
+    "parameters": {
+        "Gravity": {
+            "$ref": "8"
+        },
+        "Player Starting Speed": {
+            "$ref": "7"
+        },
+        "Suki type": {
+            "$ref": "3"
+        },
+        "Game Length": {
+            "$ref": "6"
+        },	
+        "Suki file": {
+            "$ref": "5"
+        },
+        "Enable Suki Extents": {
+            "$ref": "9"
+        }
+    }
+}

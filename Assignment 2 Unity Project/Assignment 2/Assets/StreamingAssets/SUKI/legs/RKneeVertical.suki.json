@@ -1,0 +1,26 @@
+{
+    "_id": "5905235c04738f5c22da2102",
+
+    "SchemaName": "placement",
+    "SchemaResolution": "Range",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeVectorBetween",
+    "BodyNodes": [
+        "RightLowerLeg",
+        "RightUpperLeg"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": {
+        "reductionOperator": "YValue"
+    },
+    "ConditionInfo": null,
+    "FloatBoundsInfo": {
+        "lowBounds": -0.3,
+        "highBounds": 0.5,
+        "reverse":true
+        "useExtents": true
+
+    },
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

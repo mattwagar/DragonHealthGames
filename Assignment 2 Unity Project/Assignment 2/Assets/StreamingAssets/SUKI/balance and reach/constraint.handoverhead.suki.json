@@ -1,0 +1,21 @@
+{
+    "SchemaName": "handOverHead",
+    "SchemaResolution": "Signal",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeVectorBetween",
+    "BodyNodes": [
+      "Head",
+      "LeftHand"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": {
+        "reductionOperator": "YValue"
+    },
+    "ConditionInfo": {
+      "conditionOperator": "GreaterThan",
+      "scalarOperand": 0
+    },
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

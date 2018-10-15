@@ -1,0 +1,26 @@
+{
+    "SchemaName": "joystick",
+    "SchemaResolution": "Range",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeVectorBetween",
+    "BodyNodes": [
+        "LeftShoulder",
+        "LeftHand"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": {
+        "reductionOperator": "DotProduct",
+        "vectorOperand": {
+            "x": -1.0,
+            "y": 1.0,
+            "z": 0.0
+        }
+    },
+    "ConditionInfo": null,
+    "FloatBoundsInfo": {
+        "lowBounds": 0.6,
+        "highBounds": 1
+    },
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

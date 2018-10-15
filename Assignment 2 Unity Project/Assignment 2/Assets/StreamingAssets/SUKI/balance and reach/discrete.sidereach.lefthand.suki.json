@@ -1,0 +1,21 @@
+{
+    "SchemaName": "moveLeft",
+    "SchemaResolution": "Signal",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeVectorBetween",
+    "BodyNodes": [
+      "LeftShoulder",
+      "LeftHand"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": {
+        "reductionOperator": "XValue"
+    },
+    "ConditionInfo": {
+      "conditionOperator": "GreaterThan",
+      "scalarOperand": 0.2
+    },
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

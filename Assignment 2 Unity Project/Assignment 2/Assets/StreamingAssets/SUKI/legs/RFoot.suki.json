@@ -1,0 +1,26 @@
+{
+    "_id": "5905235c04738f5c88daa443",
+    "SchemaName": "rightfoot",
+    "SchemaResolution": "Location2D",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "SingleNodePosition",
+    "BodyNodes": [
+        "RightFoot"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": null,
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": {
+        "lowBounds": {
+            "x": 0,
+            "y": 0
+        },
+        "highBounds": {
+            "x": 0,
+            "y": 0
+        },
+        "useExtents": true
+    },
+    "Vector3BoundsInfo": null
+}

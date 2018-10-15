@@ -1,0 +1,21 @@
+{
+    "_id": "5905235c04738f5c88da7764",
+    "SchemaName": "placement",
+    "SchemaResolution": "Range",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "SingleJointAngle",
+    "BodyAngles": [
+        "R_Shoulder_Abduction"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": null,
+    "FloatBoundsInfo": {
+        "lowBounds": 0,
+        "highBounds": 130,
+        "reverse": true
+        "useExtents": true
+    },
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

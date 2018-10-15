@@ -1,0 +1,93 @@
+Best Practices:
+
+Have Kinect at hip level or above (better if at chest or head level)
+Be sure that the player's feet are visible in the preview scene
+Go through the planned motion in the preview scene to ensure the body stays within camera's view
+Related to the above, standing further away from the Kinect is preferred
+It is better to have only one person in view of the camera (which you can also check in the preview)
+   Once the game starts, a second person should be able to enter
+
+
+The following are scenarios we currently have available in the scenarios directory.  You can either load the *.suki.json files (scenarios) individually, or you can load the *.scn.suki.json files (scenario files) which will batch load all the appropriate schemas.
+
+We have implemented constraints, but at the moment they are "global" and applied to all active movement signals.  We need to be able to link these constraints to only apply to specific movements.  This will not take too much longer to implement, but it will not be ready by the 4pm meeting.  However, we will demonstrate the use of global constraints in the scenarios below.  When a constraint is not met, the player's other movements will not apply toward the input for the game. The game is aware of which constraints are not being met, and in the future can display UI feedback (such as a detailed alert message).  For this demonstration, the ship will change to an orange color when a constraint is not met to indicate that the ship is not responding to input.
+
+Scenario 1: Side Stretch Both Arms (discrete)
+
+Discrete movement among lanes (move there, and stay there until a subsequent movement).  Stretch left arm up and away from the body to move one lane to the left, and same for the right.  Player must be standing up straight and cannot be hunched over.
+
+Load 01.sidestretch.scn.suki.json or load these schemas:
+constraint.straightback.suki.json
+discrete.sidereach.lefthand.suki.json
+discrete.sidereach.righthand.suki.json
+
+Notes: If you lean forward, you will notice that the ship will change color and inputs won't register.  In this way, we constrain the player's posture.  We don't yet have a constraint that requires the hand to be "up" (we currently only measure "out").  With linked constraints we will be able to do this for both hands separately.
+
+
+Scenario 2: Crossover Stretch Both Arms (discrete)
+
+Discrete movement among lanes.  Move right by crossing left hand up and across the body and reaching up toward the right.  Move left by crossing right arm in front of the body and reaching up and to the left.
+
+Load 02.crossoverstretch.scn.suki.json or load these schemas:
+constraint.straightback.suki.json
+discrete.crossover.lefthand.suki.json
+discrete.crossover.righthand.suki.json
+
+Notes: Will perform similarly to the previous, but now with crossing the arms in front of the body.  Note that this does not have the twisting constraing yet applied (requires non-global contraints to be implemented), but we will demonstrate that in another scenario
+
+
+Scenario 3:  Reach Left Arm (joystick)
+
+Joystick movement left and right using the left arm.  Extending the left arm up and away from the body will move the ship left, and bringing back over the player's head toward the right will move it right.  Players must be standing straight.
+
+Load 03.reachleftarm.scn.suki.json or load these schemas:
+constraint.handoverhead.suki.json
+constraint.straightback.suki.json
+joystick.sidereach.lefthand.suki.json
+
+Notes: A demo of alternative input that yields a joystick control rather than a discrete lane change. This is also a demo of combined constraints - if player hunches forward, or if their left arm drops below their head, no input will register.
+
+
+Scenario 4: Crossover Left Arm (joystick)
+
+Joystick movement left and right using left arm.  Stand straight and twist upper body to the right.  Reach with left hand up and to the right to move right, or back to the left to move left.  Slouching or twisting your torso back will fail the constraint
+
+Load 04.crossoverleftarm.scn.suki.json or load these scenarios:
+constraint.bodytwist.suki.json
+joystick.crossover.lefthand.suki.json
+
+Notes: More sophisticated constraint code will allow for the twist to only be necessary when reaching up and to the right, rather than requiring the user to maintain the twist even when moving left.  The system can also be "cheated" by changing foot position (standing sideways to the camera), but this will be fixed with compound constraints.
+
+
+Scenario 5: Torso Lean (discrete)
+
+Discrete movement among lanes based on upper body/shoulders leaning left/right while keeping hips stationary and standing up straight
+
+Load 05.torsosideleaning.scn.suki or load these scenarios:
+constraint.straightback.suki.json
+hipshiftleaning.suki.json
+
+Scenario 6: Hip Shift (discrete)
+
+Discrete movement among lanes based on hips shifting left/right while keeping feet stationary and standing up straight
+
+Load 06.hipshiftleaning.scn.suki or load these scenarios:
+constraint.straightback.suki.json
+torsosideleaning.suki.json
+
+
+        "Body Profiles": [
+            {
+                "value_": "suki/default.suki.json",
+                "name": "Body Profile",
+                "alias": "Body Profile",
+                "description": "Body Profile",
+                "$type": "string",
+                "$id": "24"
+            }
+        ],
+
+,
+        "Body Profile": {
+            "$ref": "23"
+        }

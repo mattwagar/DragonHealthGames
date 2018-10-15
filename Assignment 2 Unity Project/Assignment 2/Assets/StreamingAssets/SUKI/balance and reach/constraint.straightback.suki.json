@@ -1,0 +1,19 @@
+{
+    "_id": "5905235c04738f5c88da7765",
+    "SchemaName": "straightBack",
+    "SchemaResolution": "Signal",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "SingleJointAngle",
+    "BodyAngles": [
+        "Spine_Flexion"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": {
+      "conditionOperator": "LessThan",
+      "scalarOperand": 40
+    },
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}

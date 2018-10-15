@@ -1,0 +1,27 @@
+{
+    "_id": "5905235c04738f5c88dca442",
+    "SchemaName": "lefthand",
+    "SchemaResolution": "Location2D",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "SingleNodePosition",
+    "BodyNodes": [
+        "LeftHand"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": null,
+    "ConditionInfo": null,
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": {
+        "lowBounds": {
+            "x": 0,
+            "y": 0
+        },
+        "highBounds": {
+            "x": 0,
+            "y": 0
+        },
+        "useExtents": true,
+        "reverse": false
+    },
+    "Vector3BoundsInfo": null
+}

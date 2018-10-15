@@ -1,0 +1,21 @@
+{
+    "SchemaName": "bodyTwist",
+    "SchemaResolution": "Signal",
+    "SchemaDevice": "Kinect",
+    "SchemaMetric": "MultiNodeVectorBetween",
+    "BodyNodes": [
+      "Neck",
+      "LeftShoulder"
+    ],
+    "CalculationInfo": null,
+    "ReductionInfo": {
+        "reductionOperator": "XValue"
+    },
+    "ConditionInfo": {
+      "conditionOperator": "GreaterThan",
+      "scalarOperand": -0.15
+    },
+    "FloatBoundsInfo": null,
+    "Vector2BoundsInfo": null,
+    "Vector3BoundsInfo": null
+}
