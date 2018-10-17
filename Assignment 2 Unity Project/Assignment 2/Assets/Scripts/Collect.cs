@@ -19,7 +19,8 @@ public class Collect : MonoBehaviour {
 		game.score+=10;
         UpdatePlayerScore();
 		
-		gameObject.SetActive(false);
+		Destroy(gameObject);
+		
     }
 
     void UpdatePlayerScore()
