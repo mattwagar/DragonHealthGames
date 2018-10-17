@@ -13,6 +13,13 @@ public class Beat
     public int BeatStart;
     public int BeatEnd;
     public int AudioLength;
+
+    public Beat(BeatLocation beatLocation, int beatStart, int beatEnd){
+        BeatLocation = beatLocation;
+        BeatStart = beatStart;
+        BeatEnd = beatEnd;
+
+    }
     // public Track Track;
 
     // public Beat(Track track){

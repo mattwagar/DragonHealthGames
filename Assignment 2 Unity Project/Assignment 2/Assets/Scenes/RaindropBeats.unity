@@ -4419,6 +4419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417518834}
   - component: {fileID: 1417518835}
+  - component: {fileID: 1417518836}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -4458,6 +4459,17 @@ MonoBehaviour:
   duration: 0
   Skeleton: {fileID: 1529021861}
   netskeleton: {fileID: 1529021862}
+--- !u!114 &1417518836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417518833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f75d1961538a1042b8bbc2cb6f4599d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1419067498
 GameObject:
   m_ObjectHideFlags: 0
