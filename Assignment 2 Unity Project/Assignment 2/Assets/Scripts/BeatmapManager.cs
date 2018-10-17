@@ -21,11 +21,16 @@ public class BeatmapManager : MonoBehaviour {
 	private List<Beat> beats
 	{
 		get{return Track.Beats;}
-	} 
-	void Start()
+	}
+	
+	void OnEnable()
 	{
 		SetTrackClip();
 		InitializeBeats();
+	}
+	void Start()
+	{
+		PlayableDirector.Play();
 	}
 
 	void SetTrackClip()
@@ -94,6 +99,14 @@ public class BeatmapManager : MonoBehaviour {
 		{
 			TimelineAsset.DeleteTrack(tracks[i]);
 		}
+	}
+
+	public void PauseTimeline(){
+		PlayableDirector.Pause();
+	}
+
+	public void UnPauseTimeline(){
+		PlayableDirector.Play();
 	}
 
 }

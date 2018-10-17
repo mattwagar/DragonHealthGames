@@ -91,14 +91,14 @@ public class TrackEditor : Editor {
 		{
 			bool isUniqueEnd = false;
 
-			BeatLocation beatLocation = (BeatLocation)((int) (perlin * 9631 * i) % 5);
+			BeatLocation beatLocation = (BeatLocation)((int) (perlin * 7 * i) % 5);
 			// Debug.LogWarning(((int)(perlin * i)));
-			if(((int)(perlin * 9973 * i)) % 3 != 1){
+			// if(((int)(perlin * 199 * i)) % 3 != 1){
 				int beatStart = i;
 				// int beatEnd = (beatStart+1) + ((int)(perlin * 9967 * i) % ((int)track.TrackSpeed * 2));
 				int beatEnd = (beatStart + 1);
 				track.Beats.Add(new Beat(beatLocation, beatStart, beatEnd));
-			}
+			// }
 		}
 	}
 

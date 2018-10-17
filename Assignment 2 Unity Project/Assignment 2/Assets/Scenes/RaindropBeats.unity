@@ -2225,7 +2225,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 03434f5668b74774f91f16d5ea17dfc8, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -2297,7 +2297,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4455,6 +4455,7 @@ MonoBehaviour:
   score: 5
   MenuScene: eag_MainMenu
   GameScene: eag_KickCubeGame
+  BeatmapManager: {fileID: 659755883}
   PlayerObject: {fileID: 2035829500}
   duration: 0
   Skeleton: {fileID: 1529021861}

@@ -26,7 +26,7 @@ public class egPauseManager : MonoBehaviour {
     void Awake()
     {
         isPaused = false;
-        if (pausePanel)
+        if (pausePanel.active == true)
             pausePanel.SetActive(false);
     }
 
@@ -126,7 +126,7 @@ public class egPauseManager : MonoBehaviour {
     public void PauseGame()
     {
         currentPage = Page.PAUSE;
-        if (pausePanel)
+        if (pausePanel.active == false)
             pausePanel.SetActive(true);
         gameManager.PauseGame();
     }
@@ -135,14 +135,14 @@ public class egPauseManager : MonoBehaviour {
     {
         currentPage = Page.PLAY;
         gameManager.UnPauseGame();
-        if (pausePanel)
+        if (pausePanel.active == true)
             pausePanel.SetActive(false);
     }
 
 
     public void EndGame()
     {
-        if (pausePanel)
+        if (pausePanel.active == true)
             pausePanel.SetActive(false);
         if (gameOverPanel)
             gameOverPanel.SetActive(true);
