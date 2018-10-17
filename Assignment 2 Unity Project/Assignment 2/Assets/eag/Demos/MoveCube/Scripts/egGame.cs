@@ -24,6 +24,8 @@ public class egGame : MonoBehaviour {
 	public string MenuScene = "eag_MainMenu";
 	public string GameScene = "eag_KickCubeGame";
 
+	public BeatmapManager BeatmapManager;
+
 	public Transform PlayerObject;  //the player object
 	float startTime; //start time of game
 
@@ -71,9 +73,11 @@ public class egGame : MonoBehaviour {
 	public void PauseGame() {
 		//print("Game is Paused...");
 		isPaused = true;
-		Time.timeScale = 0;
-		Time.fixedDeltaTime = 0;
+		// Time.timeScale = 0;
+		// Time.fixedDeltaTime = 0;
 		AudioListener.volume = 0;
+
+		BeatmapManager.PauseTimeline();
 	}
 
     /// <summary>
@@ -82,9 +86,10 @@ public class egGame : MonoBehaviour {
 	public void UnPauseGame (){
 		//print("Unpause");
 		isPaused = false;
-		Time.timeScale = 1.0f;
-		Time.fixedDeltaTime = 0.02f;
+		// Time.timeScale = 1.0f;
+		// Time.fixedDeltaTime = 0.02f;
 		AudioListener.volume = 1.0f;
+		BeatmapManager.UnPauseTimeline();
 	}
 
     /// <summary>

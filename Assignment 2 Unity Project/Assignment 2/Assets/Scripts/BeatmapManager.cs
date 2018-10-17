@@ -21,10 +21,25 @@ public class BeatmapManager : MonoBehaviour {
 	private List<Beat> beats
 	{
 		get{return Track.Beats;}
-	} 
+	}
+	
+	void OnEnable()
+	{
+		SetTrackClip();
+		InitializeBeats();
+	}
 	void Start()
 	{
-		InitializeBeats();
+		PlayableDirector.Play();
+	}
+
+	void SetTrackClip()
+	{
+		AudioSource.clip = Track.Clip;
+		AudioTrack track = TimelineAsset.CreateTrack<AudioTrack>(null, "TrackAudio");
+
+		track.CreateClip(AudioSource.clip);
+
 	}
 
 	void InitializeBeats(){
@@ -32,7 +47,7 @@ public class BeatmapManager : MonoBehaviour {
 		for(int i = 0; i < beats.Count; i++)
 		{
 			ConvertBeatToControlTrack(beats[i], i);
-		} 
+		}
 	}
 
 	void ConvertBeatToControlTrack(Beat beat, int index){
@@ -41,9 +56,9 @@ public class BeatmapManager : MonoBehaviour {
 		TimelineAsset timelineAsset = CollectiblePrefab.GetComponent<PlayableDirector>().playableAsset as TimelineAsset;
 
 		TimelineClip clip = track.CreateDefaultClip();
-		clip.start = beat.BeatStart * (1 / (60f / Track.BPM * (float)Track.TrackSpeed));
+		clip.start = beat.BeatStart * (60f / Track.BPM / ((float)Track.TrackSpeed/4f));
 		
-		float beatDuration  = ((beat.BeatEnd - beat.BeatStart) * (1 / (60f / Track.BPM * (float)Track.TrackSpeed)));
+		float beatDuration  = ((beat.BeatEnd - beat.BeatStart) * (60f / Track.BPM / ((float)Track.TrackSpeed/4f)));
 		float collectibleDuration = (float)timelineAsset.duration;
 		
 		clip.timeScale = timelineAsset.duration / beatDuration;
@@ -84,6 +99,14 @@ public class BeatmapManager : MonoBehaviour {
 		{
 			TimelineAsset.DeleteTrack(tracks[i]);
 		}
+	}
+
+	public void PauseTimeline(){
+		PlayableDirector.Pause();
+	}
+
+	public void UnPauseTimeline(){
+		PlayableDirector.Play();
 	}
 
 }

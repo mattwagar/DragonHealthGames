@@ -2225,7 +2225,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 03434f5668b74774f91f16d5ea17dfc8, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -2297,7 +2297,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4293,7 +4293,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362134335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.53, z: -6.79}
+  m_LocalPosition: {x: 0, y: 2.53, z: -7.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4419,6 +4419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417518834}
   - component: {fileID: 1417518835}
+  - component: {fileID: 1417518836}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -4454,10 +4455,22 @@ MonoBehaviour:
   score: 5
   MenuScene: eag_MainMenu
   GameScene: eag_KickCubeGame
+  BeatmapManager: {fileID: 659755883}
   PlayerObject: {fileID: 2035829500}
   duration: 0
   Skeleton: {fileID: 1529021861}
   netskeleton: {fileID: 1529021862}
+--- !u!114 &1417518836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417518833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f75d1961538a1042b8bbc2cb6f4599d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1419067498
 GameObject:
   m_ObjectHideFlags: 0

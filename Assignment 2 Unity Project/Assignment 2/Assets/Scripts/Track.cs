@@ -9,6 +9,8 @@ public class Track : ScriptableObject {
     public int BPM;
     public TrackSpeed TrackSpeed = TrackSpeed.Quarter;
     public AudioClip Clip;
+
+    public string Seed;
     public List<Beat> Beats;
 
     
