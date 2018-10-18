@@ -16,7 +16,6 @@ public class Collect : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
     {
 		Debug.LogWarning ("Collectible hit!");
-		game.score+=10;
         UpdatePlayerScore();
 		
 		Destroy(gameObject);
