@@ -12,7 +12,7 @@ public class ScoreSystem : MonoBehaviour
     public Text scoreTextObject;
     public Text highScoreTextObject;
 
-    private int currentScore;
+    int currentScore;
 
     #endregion
 
