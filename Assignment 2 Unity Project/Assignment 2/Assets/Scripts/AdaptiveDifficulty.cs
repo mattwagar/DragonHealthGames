@@ -12,7 +12,7 @@ public class AdaptiveDifficulty : MonoBehaviour {
 
 
     [Range(0, 5)] public int adaptDifficulty = 5;
-    
+    [Range(1, 3)] public int tileSize = 1;
 
     private int score;
     private int beatTracker;
