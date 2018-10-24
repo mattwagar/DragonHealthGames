@@ -9,10 +9,11 @@ public class AdaptiveDifficulty : MonoBehaviour {
     public bool isAdaptiveOn = false;
     public Track track;
     public BeatmapManager beatmap;
+    public GameObject tiles;
 
 
     [Range(0, 5)] public int adaptDifficulty = 5;
-    [Range(1, 3)] public int tileSize = 1;
+    [Range(0.1f, 2.0f)] public float tileSize = 1.0f;
 
     private int score;
     private int beatTracker;
@@ -26,6 +27,18 @@ public class AdaptiveDifficulty : MonoBehaviour {
         }*/
 
 
+
+    }
+
+    //get value from slider on update 
+    //resizes the grid and ceiling parent object using the slider value
+    public void AdaptTiles(float tileSz){
+        tileSize = tileSz;
+        Vector3 temp = tiles.transform.localScale;
+
+        temp.x = tileSz;
+        temp.z = tileSz;
+        tiles.transform.localScale = temp;
 
     }
 
