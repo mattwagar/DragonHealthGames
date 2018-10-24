@@ -1,29 +1,17 @@
 fileFormatVersion: 2
-guid: 5570b7db65e626f4cb4beca834a2cbc2
-timeCreated: 1540404492
+guid: f48956e1a0563df49bdfab86a0fb360f
+timeCreated: 1540406641
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Flower_1
-    100002: Flower_1_j_1
-    100004: Flower_1_j_2
-    100006: Flower_1_j_3
-    100008: Flower_1_j_4
-    100010: Flower_1_j_5
-    100012: //RootNode
-    400000: Flower_1
-    400002: Flower_1_j_1
-    400004: Flower_1_j_2
-    400006: Flower_1_j_3
-    400008: Flower_1_j_4
-    400010: Flower_1_j_5
-    400012: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    4300000: Flower_1
-    7400000: Take 001
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder1
     9500000: //RootNode
-    13700000: Flower_1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,35 +38,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 114
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []

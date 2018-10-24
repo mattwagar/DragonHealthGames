@@ -1,29 +1,44 @@
 fileFormatVersion: 2
-guid: 5570b7db65e626f4cb4beca834a2cbc2
-timeCreated: 1540404492
+guid: 29ae3ada55fed1d4a8d9359c20fd2864
+timeCreated: 1540406634
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Flower_1
-    100002: Flower_1_j_1
-    100004: Flower_1_j_2
-    100006: Flower_1_j_3
-    100008: Flower_1_j_4
-    100010: Flower_1_j_5
+    100000: pCylinder1
+    100002: pSphere1
+    100004: pSphere2
+    100006: pSphere3
+    100008: pSphere4
+    100010: pSphere5
     100012: //RootNode
-    400000: Flower_1
-    400002: Flower_1_j_1
-    400004: Flower_1_j_2
-    400006: Flower_1_j_3
-    400008: Flower_1_j_4
-    400010: Flower_1_j_5
+    400000: pCylinder1
+    400002: pSphere1
+    400004: pSphere2
+    400006: pSphere3
+    400008: pSphere4
+    400010: pSphere5
     400012: //RootNode
     2100000: lambert1
-    4300000: Flower_1
-    7400000: Take 001
+    2300000: pCylinder1
+    2300002: pSphere1
+    2300004: pSphere2
+    2300006: pSphere3
+    2300008: pSphere4
+    2300010: pSphere5
+    3300000: pCylinder1
+    3300002: pSphere1
+    3300004: pSphere2
+    3300006: pSphere3
+    3300008: pSphere4
+    3300010: pSphere5
+    4300000: pCylinder1
+    4300002: pSphere1
+    4300004: pSphere2
+    4300006: pSphere3
+    4300008: pSphere4
+    4300010: pSphere5
     9500000: //RootNode
-    13700000: Flower_1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,35 +65,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 114
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
