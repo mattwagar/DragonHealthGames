@@ -10,6 +10,13 @@ public class Track : ScriptableObject {
     public TrackSpeed TrackSpeed = TrackSpeed.Quarter;
     public AudioClip Clip;
 
+    //variables for the note spawn points
+    public bool NorthSpawn = true;
+    public bool SouthSpawn = true;
+    public bool CenterSpawn = true;
+    public bool EastSpawn = true;
+    public bool WestSpawn = true;
+
     public string Seed;
     public List<Beat> Beats;
 
