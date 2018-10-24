@@ -1,17 +1,29 @@
 fileFormatVersion: 2
-guid: 00a132ec080c7764587d85491acd78a4
-timeCreated: 1539802017
+guid: d81382473ad3cdd468694bc48536673e
+timeCreated: 1540399630
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Flower_2_j_1
+    100002: Flower_2_j_2
+    100004: Flower_2_j_3
+    100006: Flower_2_j_4
+    100008: Flower_2_j_5
+    100010: Flower_6
+    100012: //RootNode
+    400000: Flower_2_j_1
+    400002: Flower_2_j_2
+    400004: Flower_2_j_3
+    400006: Flower_2_j_4
+    400008: Flower_2_j_5
+    400010: Flower_6
+    400012: //RootNode
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Flower_2
+    4300000: Flower_6
+    7400000: Take 001
     9500000: //RootNode
+    13700000: Flower_6
   externalObjects: {}
   materials:
     importMaterials: 1
