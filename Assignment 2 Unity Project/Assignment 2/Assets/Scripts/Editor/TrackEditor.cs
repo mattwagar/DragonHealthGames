@@ -17,6 +17,8 @@ public class TrackEditor : Editor {
     SerializedProperty _EastSpawn;
     SerializedProperty _WestSpawn;
 
+    SerializedProperty _ReturnCenter;
+
 	private ReorderableList _myList;
 
 	void OnEnable()
@@ -32,6 +34,7 @@ public class TrackEditor : Editor {
         _CenterSpawn = serializedObject.FindProperty("CenterSpawn");
         _EastSpawn = serializedObject.FindProperty("EastSpawn");
         _WestSpawn = serializedObject.FindProperty("WestSpawn");
+        _ReturnCenter = serializedObject.FindProperty("ReturnCenter");
 
 
         // Beats = serializedObject.FindProperty("Beats");
@@ -65,6 +68,7 @@ public class TrackEditor : Editor {
         EditorGUILayout.PropertyField(_CenterSpawn, true);
         EditorGUILayout.PropertyField(_EastSpawn, true);
         EditorGUILayout.PropertyField(_WestSpawn, true);
+        EditorGUILayout.PropertyField(_ReturnCenter);
 
 
         Track track = (Track) target;
@@ -337,6 +341,17 @@ public class TrackEditor : Editor {
 				track.Beats.Add(new Beat(beatLocation, beatStart, beatEnd));
 			// }
 		}
+
+        if (_ReturnCenter.boolValue) {
+            for (int i = 0; i < audioLength; i = i + 2)
+            {
+                int beatStart = i;
+                int beatEnd = (beatStart + 1);
+                track.Beats.RemoveAt(i);
+                track.Beats.Insert(i,new Beat(0, beatStart, beatEnd));
+            }
+        }
+
 	}
 
 	public float StringToFloat(string s)

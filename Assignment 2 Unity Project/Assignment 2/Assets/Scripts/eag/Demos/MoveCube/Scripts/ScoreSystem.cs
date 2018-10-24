@@ -46,6 +46,7 @@ public class ScoreSystem : MonoBehaviour
     public void ResetHighScore()
     {
         PlayerPrefs.DeleteKey("HighScore");
+        highScoreTextObject.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 
 

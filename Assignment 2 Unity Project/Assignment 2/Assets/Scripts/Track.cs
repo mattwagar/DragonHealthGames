@@ -16,6 +16,7 @@ public class Track : ScriptableObject {
     public bool CenterSpawn = true;
     public bool EastSpawn = true;
     public bool WestSpawn = true;
+    public bool ReturnCenter;
 
     public string Seed;
     public List<Beat> Beats;

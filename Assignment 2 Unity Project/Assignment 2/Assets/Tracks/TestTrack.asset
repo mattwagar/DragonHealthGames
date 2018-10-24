@@ -14,18 +14,19 @@ MonoBehaviour:
   BPM: 127
   TrackSpeed: 1
   Clip: {fileID: 8300000, guid: 11d68bbe6dd04f944b10e16b025ca85d, type: 3}
-  NorthSpawn: 0
-  SouthSpawn: 0
+  NorthSpawn: 1
+  SouthSpawn: 1
   CenterSpawn: 1
-  EastSpawn: 0
-  WestSpawn: 0
+  EastSpawn: 1
+  WestSpawn: 1
+  ReturnCenter: 1
   Seed: dvasdvasdv
   Beats:
   - BeatLocation: 0
     BeatStart: 0
     BeatEnd: 1
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 1
     BeatStart: 1
     BeatEnd: 2
     AudioLength: 31
@@ -33,7 +34,7 @@ MonoBehaviour:
     BeatStart: 2
     BeatEnd: 3
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 1
     BeatStart: 3
     BeatEnd: 4
     AudioLength: 31
@@ -41,7 +42,7 @@ MonoBehaviour:
     BeatStart: 4
     BeatEnd: 5
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 1
     BeatStart: 5
     BeatEnd: 6
     AudioLength: 31
@@ -49,7 +50,7 @@ MonoBehaviour:
     BeatStart: 6
     BeatEnd: 7
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 1
     BeatStart: 7
     BeatEnd: 8
     AudioLength: 31
@@ -57,7 +58,7 @@ MonoBehaviour:
     BeatStart: 8
     BeatEnd: 9
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 2
     BeatStart: 9
     BeatEnd: 10
     AudioLength: 31
@@ -65,7 +66,7 @@ MonoBehaviour:
     BeatStart: 10
     BeatEnd: 11
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 4
     BeatStart: 11
     BeatEnd: 12
     AudioLength: 31
@@ -73,7 +74,7 @@ MonoBehaviour:
     BeatStart: 12
     BeatEnd: 13
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 2
     BeatStart: 13
     BeatEnd: 14
     AudioLength: 31
@@ -89,7 +90,7 @@ MonoBehaviour:
     BeatStart: 16
     BeatEnd: 17
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 1
     BeatStart: 17
     BeatEnd: 18
     AudioLength: 31
@@ -97,7 +98,7 @@ MonoBehaviour:
     BeatStart: 18
     BeatEnd: 19
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 1
     BeatStart: 19
     BeatEnd: 20
     AudioLength: 31
@@ -113,7 +114,7 @@ MonoBehaviour:
     BeatStart: 22
     BeatEnd: 23
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 4
     BeatStart: 23
     BeatEnd: 24
     AudioLength: 31
@@ -121,7 +122,7 @@ MonoBehaviour:
     BeatStart: 24
     BeatEnd: 25
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 2
     BeatStart: 25
     BeatEnd: 26
     AudioLength: 31
@@ -137,7 +138,7 @@ MonoBehaviour:
     BeatStart: 28
     BeatEnd: 29
     AudioLength: 31
-  - BeatLocation: 0
+  - BeatLocation: 3
     BeatStart: 29
     BeatEnd: 30
     AudioLength: 31
