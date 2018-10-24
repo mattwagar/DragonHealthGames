@@ -17,132 +17,132 @@ MonoBehaviour:
   NorthSpawn: 1
   SouthSpawn: 1
   CenterSpawn: 1
-  EastSpawn: 1
-  WestSpawn: 1
+  EastSpawn: 0
+  WestSpawn: 0
   ReturnCenter: 1
   Seed: dvasdvasdv
   Beats:
   - BeatLocation: 0
     BeatStart: 0
     BeatEnd: 1
-    AudioLength: 31
-  - BeatLocation: 1
+    AudioLength: 0
+  - BeatLocation: 2
     BeatStart: 1
     BeatEnd: 2
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 2
     BeatEnd: 3
-    AudioLength: 31
-  - BeatLocation: 1
+    AudioLength: 0
+  - BeatLocation: 0
     BeatStart: 3
     BeatEnd: 4
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 4
     BeatEnd: 5
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 1
     BeatStart: 5
     BeatEnd: 6
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 6
     BeatEnd: 7
-    AudioLength: 31
-  - BeatLocation: 1
+    AudioLength: 0
+  - BeatLocation: 0
     BeatStart: 7
     BeatEnd: 8
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 8
     BeatEnd: 9
-    AudioLength: 31
-  - BeatLocation: 2
+    AudioLength: 0
+  - BeatLocation: 1
     BeatStart: 9
     BeatEnd: 10
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 10
     BeatEnd: 11
-    AudioLength: 31
-  - BeatLocation: 4
+    AudioLength: 0
+  - BeatLocation: 1
     BeatStart: 11
     BeatEnd: 12
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 12
     BeatEnd: 13
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 2
     BeatStart: 13
     BeatEnd: 14
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 14
     BeatEnd: 15
-    AudioLength: 31
-  - BeatLocation: 0
+    AudioLength: 0
+  - BeatLocation: 2
     BeatStart: 15
     BeatEnd: 16
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 16
     BeatEnd: 17
-    AudioLength: 31
-  - BeatLocation: 1
+    AudioLength: 0
+  - BeatLocation: 0
     BeatStart: 17
     BeatEnd: 18
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 18
     BeatEnd: 19
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 1
     BeatStart: 19
     BeatEnd: 20
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 20
     BeatEnd: 21
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 21
     BeatEnd: 22
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 22
     BeatEnd: 23
-    AudioLength: 31
-  - BeatLocation: 4
+    AudioLength: 0
+  - BeatLocation: 0
     BeatStart: 23
     BeatEnd: 24
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 24
     BeatEnd: 25
-    AudioLength: 31
-  - BeatLocation: 2
+    AudioLength: 0
+  - BeatLocation: 0
     BeatStart: 25
     BeatEnd: 26
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 26
     BeatEnd: 27
-    AudioLength: 31
-  - BeatLocation: 0
+    AudioLength: 0
+  - BeatLocation: 1
     BeatStart: 27
     BeatEnd: 28
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 28
     BeatEnd: 29
-    AudioLength: 31
-  - BeatLocation: 3
+    AudioLength: 0
+  - BeatLocation: 2
     BeatStart: 29
     BeatEnd: 30
-    AudioLength: 31
+    AudioLength: 0
   - BeatLocation: 0
     BeatStart: 30
     BeatEnd: 31
-    AudioLength: 31
+    AudioLength: 0

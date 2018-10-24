@@ -80,7 +80,7 @@ public class TrackEditor : Editor {
 
 		if(GUILayout.Button("Procedurally Generate Beatmap"))
         {
-            GenerateBeatmap(track);
+            track.GenerateBeatmap();
         }
 
 		if(GUILayout.Button("Clear Beatmap List"))
@@ -96,232 +96,230 @@ public class TrackEditor : Editor {
 		
     }
 
-	public void GenerateBeatmap(Track track)
-	{
-		track.Beats.Clear();
+	// public void GenerateBeatmap(Track track)
+	// {
+	// 	track.Beats.Clear();
 
-		float fseed = StringToFloat(track.Seed);
+	// 	float fseed = StringToFloat(track.Seed);
 
-		Debug.LogWarning("fseed " + fseed);
+	// 	Debug.LogWarning("fseed " + fseed);
 
-		float perlin = Mathf.PerlinNoise(fseed, fseed);
+	// 	float perlin = Mathf.PerlinNoise(fseed, fseed);
 
-		Debug.LogWarning("perlin " + perlin);
+	// 	Debug.LogWarning("perlin " + perlin);
 
-		int audioLength = (int)((float)track.BPM * track.Clip.length / 60f) * (int)track.TrackSpeed / 4;
-
-
-        //Debug.Log(audioLength);
-		for(int i = 0; i < audioLength; i++)
-		{
-			bool isUniqueEnd = false;
+	// 	int audioLength = (int)((float)track.BPM * track.Clip.length / 60f) * (int)track.TrackSpeed / 4;
 
 
-            //had to comment out the perlin code and seed code for functionality, sorry matt
-            //BeatLocation beatLocation = (BeatLocation)((int)(perlin * 7 * i) % 5);
+    //     //Debug.Log(audioLength);
+	// 	for(int i = 0; i < audioLength; i++)
+	// 	{
+	// 		bool isUniqueEnd = false;
 
 
-            //based on the publick bool, if they are off continue to find a random number to spawn the notes with
-            BeatLocation beatLocation = (BeatLocation)Random.Range(0,5);
-
-            if (!_NorthSpawn.boolValue && !_SouthSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 2 || (int)beatLocation == 0 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 0 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue && !_SouthSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 0 || (int)beatLocation == 2)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue && !_SouthSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 3 || (int)beatLocation == 2)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 2) || (int)beatLocation == 4 || (int)beatLocation == 0 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_SouthSpawn.boolValue && !_CenterSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 2 || (int)beatLocation == 0)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_EastSpawn.boolValue && !_CenterSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 3 || (int)beatLocation == 0)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 0)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 2) || (int)beatLocation == 4 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 2) || (int)beatLocation == 0 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue)
-            {
-                while (((int)beatLocation == 2) || (int)beatLocation == 4 || (int)beatLocation == 0)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_CenterSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 0) || (int)beatLocation == 4 || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_SouthSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 2)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_CenterSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 0)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue)
-            {
-                while (((int)beatLocation == 1) || (int)beatLocation == 4)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue)
-            {
-                while (((int)beatLocation == 2) || (int)beatLocation == 4)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 2) || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_CenterSpawn.boolValue && !_WestSpawn.boolValue)
-            {
-                while (((int)beatLocation == 0) || (int)beatLocation == 4)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_CenterSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 0) || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_CenterSpawn.boolValue && !_SouthSpawn.boolValue)
-            {
-                while (((int)beatLocation == 0) || (int)beatLocation == 2)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_WestSpawn.boolValue && !_EastSpawn.boolValue)
-            {
-                while (((int)beatLocation == 4) || (int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_EastSpawn.boolValue)
-            {
-                while ((int)beatLocation == 3)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_SouthSpawn.boolValue)
-            {
-                while ((int)beatLocation == 2)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_CenterSpawn.boolValue)
-            {
-                while ((int)beatLocation == 0)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_WestSpawn.boolValue)
-            {
-                while ((int)beatLocation == 4)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
-            else if (!_NorthSpawn.boolValue)
-            {
-                while ((int)beatLocation == 1)
-                {
-                    beatLocation = (BeatLocation)Random.Range(0, 5);
-                }
-            }
+    //         //had to comment out the perlin code and seed code for functionality, sorry matt
+    //         //BeatLocation beatLocation = (BeatLocation)((int)(perlin * 7 * i) % 5);
 
 
+    //         //based on the publick bool, if they are off continue to find a random number to spawn the notes with
+    //         BeatLocation beatLocation = (BeatLocation)Random.Range(0,5);
+
+    //         if (!_NorthSpawn.boolValue && !_SouthSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 2 || (int)beatLocation == 0 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 0 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue && !_SouthSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 0 || (int)beatLocation == 2)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue && !_SouthSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 3 || (int)beatLocation == 2)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 2) || (int)beatLocation == 4 || (int)beatLocation == 0 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_SouthSpawn.boolValue && !_CenterSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 2 || (int)beatLocation == 0)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_EastSpawn.boolValue && !_CenterSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 3 || (int)beatLocation == 0)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 0)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 4 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 2) || (int)beatLocation == 4 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue && !_CenterSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 2) || (int)beatLocation == 0 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue && !_CenterSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 2) || (int)beatLocation == 4 || (int)beatLocation == 0)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_CenterSpawn.boolValue && !_WestSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 0) || (int)beatLocation == 4 || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_SouthSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 2)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_CenterSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 0)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue && !_WestSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 1) || (int)beatLocation == 4)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue && !_WestSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 2) || (int)beatLocation == 4)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 2) || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_CenterSpawn.boolValue && !_WestSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 0) || (int)beatLocation == 4)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_CenterSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 0) || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_CenterSpawn.boolValue && !_SouthSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 0) || (int)beatLocation == 2)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_WestSpawn.boolValue && !_EastSpawn.boolValue)
+    //         {
+    //             while (((int)beatLocation == 4) || (int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_EastSpawn.boolValue)
+    //         {
+    //             while ((int)beatLocation == 3)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_SouthSpawn.boolValue)
+    //         {
+    //             while ((int)beatLocation == 2)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_CenterSpawn.boolValue)
+    //         {
+    //             while ((int)beatLocation == 0)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_WestSpawn.boolValue)
+    //         {
+    //             while ((int)beatLocation == 4)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
+    //         else if (!_NorthSpawn.boolValue)
+    //         {
+    //             while ((int)beatLocation == 1)
+    //             {
+    //                 beatLocation = (BeatLocation)Random.Range(0, 5);
+    //             }
+    //         }
 
 
 
@@ -331,28 +329,30 @@ public class TrackEditor : Editor {
 
 
 
-            //BeatLocation beatLocation = (BeatLocation)((int) (perlin * 7 * i) % 5);
-            //Debug.Log((int)beatLocation);
-            // Debug.LogWarning(((int)(perlin * i)));
-            // if(((int)(perlin * 199 * i)) % 3 != 1){
-            int beatStart = i;
-				// int beatEnd = (beatStart+1) + ((int)(perlin * 9967 * i) % ((int)track.TrackSpeed * 2));
-				int beatEnd = (beatStart + 1);
-				track.Beats.Add(new Beat(beatLocation, beatStart, beatEnd));
-			// }
-		}
 
-        if (_ReturnCenter.boolValue) {
-            for (int i = 0; i < audioLength; i = i + 2)
-            {
-                int beatStart = i;
-                int beatEnd = (beatStart + 1);
-                track.Beats.RemoveAt(i);
-                track.Beats.Insert(i,new Beat(0, beatStart, beatEnd));
-            }
-        }
 
-	}
+    //         //BeatLocation beatLocation = (BeatLocation)((int) (perlin * 7 * i) % 5);
+    //         //Debug.Log((int)beatLocation);
+    //         // Debug.LogWarning(((int)(perlin * i)));
+    //         // if(((int)(perlin * 199 * i)) % 3 != 1){
+    //         int beatStart = i;
+	// 			// int beatEnd = (beatStart+1) + ((int)(perlin * 9967 * i) % ((int)track.TrackSpeed * 2));
+	// 			int beatEnd = (beatStart + 1);
+	// 			track.Beats.Add(new Beat(beatLocation, beatStart, beatEnd));
+	// 		// }
+	// 	}
+
+    //     if (_ReturnCenter.boolValue) {
+    //         for (int i = 0; i < audioLength; i = i + 2)
+    //         {
+    //             int beatStart = i;
+    //             int beatEnd = (beatStart + 1);
+    //             track.Beats.RemoveAt(i);
+    //             track.Beats.Insert(i,new Beat(0, beatStart, beatEnd));
+    //         }
+    //     }
+
+	// }
 
 	public float StringToFloat(string s)
 	{
